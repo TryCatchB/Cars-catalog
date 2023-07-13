@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Bmw 3 series 2023",
+    "price": 44795,
+    "image": "url('/bmw 3-series.avif')"
+  },
+  {
+    "id": 2,
+    "name": "Toyota Camry 2022",
+    "price": 25395,
+    "image": "url('/camry.avif')"
+  },
+  {
+    "id": 3,
+    "name": "Audi s8",
+    "price": 175120,
+    "image": "url('/audi-s8-2019.jpg')"
+  },
+  {
+    "id": 4,
+    "name": "Audi RS7",
+    "price": 125995,
+    "image": "url('/rs7.jpeg')"
+  },
+  {
+    "id": 5,
+    "name": "Mersedec Bens s63 amg",
+    "price": 168700,
+    "image": "url('/s63 amg.jpeg')"
+  }
+]
