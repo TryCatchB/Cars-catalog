@@ -3,14 +3,14 @@
 
   & input {
     padding: 5px 10px;
-    border: none;
-    outline: none;
-    transition: border-color 0.4s ease;
     border: 1px solid transparent;
     margin-bottom: 10px;
+    transition: border-color 0.4s ease-in-out;
+    border: none;
+    outline: none;
 
     &:focus {
-      border-color: aqua;
+      border-color: blue;
     }
   }
 }
