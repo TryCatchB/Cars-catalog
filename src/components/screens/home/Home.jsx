@@ -1,20 +1,51 @@
-import { useState } from "react";
-import CarItem from "./car-item/CarItem";
-import { cars as carsData } from "./cars.data";
-import CreateCarForm from "./create-car-form/CreateCarForm";
+import { useContext, useEffect, useState } from "react";
+import User from "./user/User";
+import CreateUser from "./create-user/CreateUser";
+import { UserService } from "../../../services/user.service";
+import { AuthContext } from "../../providers/AuthProvider";
 
 function Home() {
-  const [cars, setCars] = useState(carsData);
+  const [users, setUsers] = useState([]);
+
+  const { customer, setCustomer } = useContext(AuthContext);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await UserService.getAll();
+
+      setUsers(data);
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div>
-      <h1>Cars catalog</h1>
-      <CreateCarForm setCars={setCars} />
+      <h1>Users catalog</h1>
+
+      {customer ? (
+        <>
+          <h2> Welcome, {customer.name}</h2>
+          <button onClick={() => setCustomer(null)}>Logout</button>
+        </>
+      ) : (
+        <button
+          onClick={() =>
+            setCustomer({
+              name: "Key",
+            })
+          }
+        >
+          Login
+        </button>
+      )}
+
+      <CreateUser setUsers={setUsers} />
       <div>
-        {cars.length ? (
-          cars.map((car) => <CarItem key={car.id} car={car} />)
+        {users.length ? (
+          users.map((user) => <User key={user.id} user={user} />)
         ) : (
-          <p>There is no cars</p>
+          <p>There is no users</p>
         )}
       </div>
     </div>
