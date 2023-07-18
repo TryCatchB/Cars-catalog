@@ -3,11 +3,12 @@ import { Link, useParams } from "react-router-dom";
 import { UserService } from "../../../services/user.service";
 import User from "../home/user/User";
 import withAuth from "../../../HOC/withAuth";
+import { IUser } from "../../../types/user.interface";
 
 const UserDetail = () => {
   const { id } = useParams();
 
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState<IUser>({} as IUser);
 
   useEffect(() => {
     if (!id) return;

@@ -1,8 +1,8 @@
-import React from "react";
 import styles from "../Home.module.css";
 import { Link } from "react-router-dom";
+import { IUser } from "../../../../types/user.interface";
 
-const User = ({ user }) => {
+const User = ({ user }: { user: IUser }) => {
   return (
     <div key={user.id} className={styles.item}>
       <div className={styles.info}>
