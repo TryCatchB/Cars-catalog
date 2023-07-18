@@ -1,25 +1,17 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { UserService } from "../../../services/user.service";
 import User from "../home/user/User";
 import withAuth from "../../../HOC/withAuth";
 import { IUser } from "../../../types/user.interface";
+import { useGetUser } from "./useGetUser";
+import styles from "./UserDetail.module.css";
 
 const UserDetail = () => {
   const { id } = useParams();
 
   const [user, setUser] = useState<IUser>({} as IUser);
 
-  useEffect(() => {
-    if (!id) return;
-
-    const fetchData = async () => {
-      const data = await UserService.getById(id);
-      setUser(data);
-    };
-
-    fetchData();
-  }, [id]);
+  useGetUser(setUser, id);
 
   if (!user.name) {
     return <p>Loading...</p>;
@@ -27,7 +19,9 @@ const UserDetail = () => {
 
   return (
     <div>
-      <Link to="/">Back</Link>
+      <Link className={styles.btn} to="/">
+        Back
+      </Link>
       <User user={user} />
     </div>
   );

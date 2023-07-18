@@ -3,7 +3,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import ErrorMessage from "./ErrorMessage";
 import { IUserData } from "../../../../types/user.interface";
 
-const CreateUser = ({ setUsers }) => {
+const CreateUser = (props: any) => {
   const {
     register,
     reset,
@@ -14,7 +14,7 @@ const CreateUser = ({ setUsers }) => {
   });
 
   const createUser: SubmitHandler<IUserData> = (data) => {
-    setUsers((prev) => [...prev, { id: prev.length + 1, ...data }]);
+    props.setUsers((prev: any) => [...prev, { id: prev.length + 1, ...data }]);
     reset();
   };
 

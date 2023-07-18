@@ -5,7 +5,7 @@ const ErrorMessage: FC<{ error?: string }> = ({ error }) => {
 
   return (
     <div>
-      (<p style={{ color: "red" }}>Name is required </p>)
+      <p style={{ color: "red" }}>Name is required </p>
     </div>
   );
 };

@@ -1,0 +1,12 @@
+.btn {
+  display: inline-block;
+  color: #fff;
+  margin-bottom: 0.9375rem;
+  text-decoration: none;
+}
+
+@media (min-width: 1023px) {
+  .btn:hover {
+    text-decoration: underline;
+  }
+}
