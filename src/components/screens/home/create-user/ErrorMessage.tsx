@@ -1,12 +1,12 @@
 import { FC } from "react";
 
-const ErrorMessage: FC<{ error?: string }> = ({ error }) => {
+const ErrorMessage: FC<{ error: string | undefined }> = ({ error }) => {
   if (!error) return null;
 
   return (
-    <div>
-      <p style={{ color: "red" }}>Name is required </p>
-    </div>
+    <>
+      <p style={{ color: "red" }}>{error}</p>
+    </>
   );
 };
 

@@ -3,9 +3,10 @@ import CreateUser from "./create-user/CreateUser";
 import Header from "../../ui/Header";
 import Catalog from "../../ui/Catalog";
 import { useGetAll } from "../../../hooks/useGetAll";
+import { IUser } from "../../../types/user.interface";
 
 function Home() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<IUser[]>([]);
 
   useGetAll(setUsers);
 

@@ -1,7 +1,7 @@
 import styles from "./CreateUser.module.css";
 import { SubmitHandler, useForm } from "react-hook-form";
 import ErrorMessage from "./ErrorMessage";
-import { IUserData } from "../../../../types/user.interface";
+import { IUser, IUserData } from "../../../../types/user.interface";
 
 const CreateUser = (props: any) => {
   const {
@@ -14,7 +14,10 @@ const CreateUser = (props: any) => {
   });
 
   const createUser: SubmitHandler<IUserData> = (data) => {
-    props.setUsers((prev: any) => [...prev, { id: prev.length + 1, ...data }]);
+    props.setUsers((prev: IUser[]) => [
+      ...prev,
+      { id: prev.length + 1, ...data },
+    ]);
     reset();
   };
 
@@ -24,8 +27,7 @@ const CreateUser = (props: any) => {
         {...register("name", { required: "Name is required" })}
         placeholder="Name"
       />
-
-      <ErrorMessage error={errors?.name?.message} />
+      <ErrorMessage error={errors?.name?.message || undefined} />
 
       <input {...register("email", { required: true })} placeholder="Email" />
       <input {...register("phone", { required: true })} placeholder="Phone" />
