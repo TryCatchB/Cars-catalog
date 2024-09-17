@@ -1,10 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./assets/styles/global.css";
 import Router from "./components/Router";
 import AuthProvider from "./components/providers/AuthProvider";
+import "./assets/styles/global.css";
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+const rootElement = document.getElementById("root") as HTMLElement;
+
+if (!rootElement) {
+  console.error("Root element not found");
+}
+
+const root = ReactDOM.createRoot(rootElement);
+root.render(
   <React.StrictMode>
     <AuthProvider>
       <Router />

@@ -1,15 +1,24 @@
+import { FC } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./screens/home/Home";
-import UserDetail from "./screens/user-detail/UserDetail";
+import { useAuth } from "../hooks/useAuth";
+import { routes } from "./routes";
+import SignInPage from "./ui/SignInPage";
 
-const Router = () => {
+const Router: FC = () => {
+  const { customer } = useAuth();
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Home />} path="/" />
-        <Route element={<UserDetail />} path="/user/:id" />
-
-        <Route element={<div>Not found</div>} path="*" />
+        {routes.map((route) => {
+          return (
+            <Route
+              key={route.path}
+              path={route.path}
+              element={customer ? <route.element /> : <SignInPage />}
+            />
+          );
+        })}
       </Routes>
     </BrowserRouter>
   );

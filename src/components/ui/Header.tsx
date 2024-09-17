@@ -1,10 +1,11 @@
+import { FC } from "react";
 import { useAuth } from "../../hooks/useAuth";
 
-const Header = () => {
+const Header: FC = () => {
   const { customer, setCustomer } = useAuth();
 
   return (
-    <div>
+    <header>
       {customer ? (
         <>
           <h2> Welcome, {customer.name}</h2>
@@ -21,7 +22,7 @@ const Header = () => {
           Login
         </button>
       )}
-    </div>
+    </header>
   );
 };
 

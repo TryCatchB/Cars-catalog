@@ -1,23 +1,22 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import CreateUser from "./create-user/CreateUser";
-import Header from "../../ui/Header";
 import Catalog from "../../ui/Catalog";
 import { useGetAll } from "../../../hooks/useGetAll";
 import { IUser } from "../../../types/user.interface";
+import styles from "./Home.module.css";
 
-function Home() {
+const Home: FC = () => {
   const [users, setUsers] = useState<IUser[]>([]);
 
   useGetAll(setUsers);
 
   return (
     <div>
-      <h1>Users catalog</h1>
-      <Header />
+      <h1 className={styles.title}>Users catalog</h1>
       <CreateUser setUsers={setUsers} />
       {users.length ? <Catalog users={users} /> : <p>Loading...</p>}
     </div>
   );
-}
+};
 
 export default Home;

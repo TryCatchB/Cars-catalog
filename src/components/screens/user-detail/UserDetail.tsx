@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import User from "../home/user/User";
 import withAuth from "../../../HOC/withAuth";
@@ -6,7 +6,7 @@ import { IUser } from "../../../types/user.interface";
 import { useGetUser } from "./useGetUser";
 import styles from "./UserDetail.module.css";
 
-const UserDetail = () => {
+const UserDetail: FC = () => {
   const { id } = useParams();
 
   const [user, setUser] = useState<IUser>({} as IUser);
